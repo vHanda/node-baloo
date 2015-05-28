@@ -1,8 +1,8 @@
 {
   "targets": [
     {
-      "target_name": "addon",
-      "sources": [ "hello.cpp" ],
+      "target_name": "baloo",
+      "sources": [ "balooaddon.cpp", "query.cpp" ],
       "libraries+": [
         "<!@(pkg-config --libs Baloo)",
       ],
