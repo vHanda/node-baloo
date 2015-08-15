@@ -90,7 +90,7 @@ void Query::New(const FunctionCallbackInfo<Value>& args)
 
 void Query::exec(const FunctionCallbackInfo<Value>& args)
 {
-    if (args.Length() != 0) {
+    if (args.Length() != 1) {
         // Throw an exception!
         return;
     }
@@ -115,6 +115,8 @@ void Query::exec(const FunctionCallbackInfo<Value>& args)
         array->Set(i, str);
     }
 
-    args.GetReturnValue().Set(array);
+    Local<Function> cb = Local<Function>::Cast(args[0]);
+    Local<Value> argv[1] = { array };
+    cb->Call(isolate->GetCurrentContext()->Global(), 1, argv);
 }
 
