@@ -15,8 +15,11 @@
   ],
   "dependencies": {},
   "scripts": {
-    "install": "node-gyp rebuild"
+    "install": "node-gyp rebuild",
+    "test": "./node_modules/mocha/bin/mocha -u tdd *.test.js"
   },
-  "devDependencies": {},
-  "optionalDependencies": {}
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
+  }
 }

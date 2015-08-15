@@ -94,7 +94,7 @@ void Query::exec(const FunctionCallbackInfo<Value>& args)
 
     if (args.Length() != 1) {
         v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, "Baloo.Query.exec expects 1 agument");
-        isolate->ThrowException(v8::Exception::SyntaxError(str));
+        isolate->ThrowException(v8::Exception::TypeError(str));
         return;
     }
 
