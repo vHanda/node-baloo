@@ -19,7 +19,6 @@
 
 #include "query.h"
 
-#include <QDebug>
 #include <QByteArray>
 
 using namespace v8;
@@ -112,7 +111,6 @@ void Query::exec(const FunctionCallbackInfo<Value>& args)
     QStringList results;
     while (it.next()) {
         results << it.filePath();
-        qDebug() << it.filePath();
     }
 
     Handle<Array> array = Array::New(isolate, results.size());
