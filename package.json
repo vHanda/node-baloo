@@ -1,0 +1,22 @@
+{
+  "name": "baloo",
+  "version": "0.0.1",
+  "author": "Vishesh Handa <me@vhanda.in>",
+  "description": "Node bindings for Baloo",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vhanda/node-baloo.git"
+  },
+  "homepage": "git://github.com/vhanda/node-baloo.git",
+  "main": "",
+  "keywords": [
+    "baloo",
+    "kde"
+  ],
+  "dependencies": {},
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
