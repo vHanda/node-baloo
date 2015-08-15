@@ -8,7 +8,7 @@
     "url": "git://github.com/vhanda/node-baloo.git"
   },
   "homepage": "git://github.com/vhanda/node-baloo.git",
-  "main": "",
+  "main": "./build/Release/baloo",
   "keywords": [
     "baloo",
     "kde"
