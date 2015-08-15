@@ -1,6 +1,6 @@
 {
   "name": "baloo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Vishesh Handa <me@vhanda.in>",
   "description": "Node bindings for Baloo",
   "license": "LGPL2",
