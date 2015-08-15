@@ -90,13 +90,20 @@ void Query::New(const FunctionCallbackInfo<Value>& args)
 
 void Query::exec(const FunctionCallbackInfo<Value>& args)
 {
+    Isolate* isolate = Isolate::GetCurrent();
+    HandleScope scope(isolate);
+
     if (args.Length() != 1) {
-        // Throw an exception!
+        v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, "Baloo.Query.exec expects 1 agument");
+        isolate->ThrowException(v8::Exception::SyntaxError(str));
         return;
     }
 
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
+    if (!args[0]->IsFunction()) {
+        v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, "Argument must be a callback function");
+        isolate->ThrowException(v8::Exception::TypeError(str));
+        return;
+    }
 
     Query* query = ObjectWrap::Unwrap<Query>(args.Holder());
     Baloo::Query q = query->m_query;
