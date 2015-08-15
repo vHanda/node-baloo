@@ -1,4 +1,4 @@
-var Baloo = require('./build/Release/baloo');
+var Baloo = require('../build/Release/baloo');
 
 var sinon = require('sinon');
 

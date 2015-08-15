@@ -58,6 +58,8 @@ void Query::New(const FunctionCallbackInfo<Value>& args)
     if (args.IsConstructCall()) {
         if (args.Length() > 1) {
             // Throw exception
+            // throw v8::Exception::SyntaxError(v8::String::New("..."));
+
             return;
         }
 

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "author": "Vishesh Handa <me@vhanda.in>",
   "description": "Node bindings for Baloo",
+  "license": "LGPL2",
   "repository": {
     "type": "git",
     "url": "git://github.com/vhanda/node-baloo.git"
@@ -16,7 +17,7 @@
   "dependencies": {},
   "scripts": {
     "install": "node-gyp rebuild",
-    "test": "./node_modules/mocha/bin/mocha -u tdd *.test.js"
+    "test": "./node_modules/mocha/bin/mocha -u tdd test/*.js"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
