@@ -56,29 +56,27 @@ void Query::New(const FunctionCallbackInfo<Value>& args)
     HandleScope scope(isolate);
 
     if (args.IsConstructCall()) {
-        if (args.Length() > 1) {
-            // Throw exception
-            // throw v8::Exception::SyntaxError(v8::String::New("..."));
-
+        if (args.Length() != 1) {
+            Local<String> str = String::NewFromUtf8(isolate, "Consturctor expects 1 agument");
+            isolate->ThrowException(Exception::TypeError(str));
             return;
         }
 
-        if (!args[0]->IsUndefined()) {
-            if (!args[0]->IsString()) {
-                // Throw an exception
-                return;
-            }
-
-            Local<String> str = args[0]->ToString();
-            QByteArray arr;
-            arr.resize(str->Utf8Length());
-            str->WriteUtf8(arr.data(), arr.length());
-
-            QString queryString = QString::fromUtf8(arr);
-            Query* query = new Query(queryString);
-            query->Wrap(args.This());
-            args.GetReturnValue().Set(args.This());
+        if (!args[0]->IsString()) {
+            Local<String> str = String::NewFromUtf8(isolate, "Argument must be a string");
+            isolate->ThrowException(Exception::TypeError(str));
+            return;
         }
+
+        Local<String> str = args[0]->ToString();
+        QByteArray arr;
+        arr.resize(str->Utf8Length());
+        str->WriteUtf8(arr.data(), arr.length());
+
+        QString queryString = QString::fromUtf8(arr);
+        Query* query = new Query(queryString);
+        query->Wrap(args.This());
+        args.GetReturnValue().Set(args.This());
     }
     else {
         // Invoked as plain function, turn into construct call.

@@ -5,11 +5,31 @@ var sinon = require('sinon');
 suite('Query', function() {
     var sut;
 
-    setup(function() {
-        sut = new Baloo.Query('test');
+    suite('#constructor', function() {
+        test('Should throw TypeError on no arguments', function() {
+            try {
+                var spy = sinon.spy(Baloo, 'Query');
+                var sut = new Baloo.Query();
+            } catch(err) {}
+            sinon.assert.threw(spy, 'TypeError');
+            spy.restore();
+        });
+
+        test('Should throw TypeError on invalid argument', function() {
+            try {
+                var spy = sinon.spy(Baloo, 'Query');
+                var sut = new Baloo.Query(42);
+            } catch(err) {}
+            sinon.assert.threw(spy, 'TypeError');
+            spy.restore();
+        });
     });
 
     suite('#exec', function() {
+        setup(function() {
+            sut = new Baloo.Query('test');
+        });
+
         test('Should throw TypeError on no arguments', function() {
             try {
                 var spy = sinon.spy(sut, 'exec');
