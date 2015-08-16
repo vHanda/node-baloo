@@ -93,14 +93,14 @@ void Query::exec(const FunctionCallbackInfo<Value>& args)
     HandleScope scope(isolate);
 
     if (args.Length() != 1) {
-        v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, "Baloo.Query.exec expects 1 agument");
-        isolate->ThrowException(v8::Exception::TypeError(str));
+        Local<String> str = String::NewFromUtf8(isolate, "Baloo.Query.exec expects 1 agument");
+        isolate->ThrowException(Exception::TypeError(str));
         return;
     }
 
     if (!args[0]->IsFunction()) {
-        v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, "Argument must be a callback function");
-        isolate->ThrowException(v8::Exception::TypeError(str));
+        Local<String> str = String::NewFromUtf8(isolate, "Argument must be a callback function");
+        isolate->ThrowException(Exception::TypeError(str));
         return;
     }
 
