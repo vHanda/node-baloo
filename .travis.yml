@@ -1,4 +1,4 @@
-before_script:
+before_install:
     - sudo add-apt-repository ppa:kubuntu-ppa/staging-frameworks -y
     - sudo apt-get update -q
     - sudo apt-get install baloo-kf5
